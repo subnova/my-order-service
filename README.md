@@ -63,3 +63,6 @@ or
   ]
 }
 ```
+
+The POSTed document is validated using JSON schema.
+
