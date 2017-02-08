@@ -1,0 +1,33 @@
+version: '2'
+services:
+  kafka:
+    image: spotify/kafka:latest
+    ports:
+    - 2181:2181
+    - 9092:9092
+    environment:
+    - ADVERTISED_PORT=9092
+    - ADVERTISED_HOST=kafka
+  redis:
+    image: redis:3.2.7-alpine
+    ports:
+    - 6379:6379
+  legacyorderprocessor:
+    build: ../my-legacy-order-processor
+    ports:
+    - 8086:8086
+    depends_on:
+    - kafka
+    environment:
+    - ENVIRONMENT=compose
+  order:
+    build: .
+    ports:
+    - 8085:8085
+    depends_on:
+    - kafka
+    - redis
+    environment:
+    - ENVIRONMENT=cloud,compose
+    - VCAP_APPLICATION={"name":"my-order-service","instance_id":"my-order-service-1"}
+    - VCAP_SERVICES={"redis":[{"name":"redis","tags":["redis"],"credentials":{"port":"6379","hostname":"redis"}}]}

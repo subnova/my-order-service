@@ -1,0 +1,31 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: my-order-service
+  cloud:
+    stream:
+      default-binder: kafka
+      bindings:
+        output:
+          contentType: application/json
+          destination: order.created
+        input:
+          contentType: application/json
+          destination: order.created.finally
+logging:
+  level:
+    org:
+      apache:
+        kafka: WARN
+
+---
+
+spring:
+  profiles: compose
+  cloud:
+    stream:
+      kafka:
+        binder:
+          zk-nodes: [kafka]
+          brokers: [kafka]
