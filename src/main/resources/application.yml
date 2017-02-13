@@ -13,6 +13,9 @@ spring:
         input:
           contentType: application/json
           destination: order.created.finally
+  sleuth:
+    stream:
+      enabled: false
 logging:
   level:
     org:
@@ -29,3 +32,5 @@ spring:
         binder:
           zk-nodes: [kafka]
           brokers: [kafka]
+  zipkin:
+    base-url: http://zipkin:9411/

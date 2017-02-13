@@ -1,5 +1,9 @@
 version: '2'
 services:
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+    - 9411:9411
   kafka:
     image: spotify/kafka:latest
     ports:

@@ -37,8 +37,9 @@ An order should look like:
      "countryCode":"UK"
     }
   },
+  "totalShipmentCount":3,
   "shipments":[
-    {"shipmentNumber":1,"totalShipmentCount":3,"shipmentDate":"2017-01-01"}
+    {"shipmentNumber":1,"shipmentDate":"2017-01-01"}
   ]
 }
 ```
@@ -58,11 +59,14 @@ or
       "contactStrategy":"EMAIL"
     }
   },
+  "totalShipmentCount":1,
   "shipments":[
-    {"shipmentNumber":1,"totalShipmentCount":1,"shipmentDate":"2017-01-01"}
+    {"shipmentNumber":1,"shipmentDate":"2017-01-01"}
   ]
 }
 ```
 
 The POSTed document is validated using JSON schema.
+
+Network interactions are logged to a [Zipkin](http://zipkin.io) server running on http://localhost:9411/. 
 

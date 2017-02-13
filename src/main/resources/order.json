@@ -11,6 +11,7 @@
       {"$ref":"#/definitions/recipient"},
       {"$ref":"#/definitions/collectPlusRecipient"}
     ]},
+    "totalShipmentCount":{"type":"number","minimum":1},
     "shipments":{
       "type":"array",
       "items":{"$ref":"#/definitions/shipment"},
@@ -22,13 +23,9 @@
   "definitions":{
     "shipment":{
       "type":"object",
-      "required":["shipmentNumber", "totalShipmentCount", "shipmentDate"],
+      "required":["shipmentNumber", "shipmentDate"],
       "properties":{
         "shipmentNumber":{
-          "type":"number",
-          "minimum":1
-        },
-        "totalShipmentCount":{
           "type":"number",
           "minimum":1
         },

@@ -43,8 +43,9 @@ dependencies {
 
     compile "org.springframework.cloud:spring-cloud-starter-stream-kafka:1.1.1.RELEASE"
 
-    compile "org.springframework.cloud:spring-cloud-starter-sleuth:1.1.1.RELEASE"
-    compile "org.springframework.cloud:spring-cloud-sleuth-stream:1.1.1.RELEASE"
+    compile "org.springframework.cloud:spring-cloud-starter-sleuth:1.1.2.RELEASE"
+    compile "org.springframework.cloud:spring-cloud-sleuth-stream:1.1.2.RELEASE"
+    compile "org.springframework.cloud:spring-cloud-sleuth-zipkin:1.1.2.RELEASE"
 
     compile "io.springfox:springfox-swagger-ui:2.2.2"
     compile "io.springfox:springfox-swagger2:2.2.2"
