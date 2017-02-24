@@ -1,9 +1,5 @@
 version: '2'
 services:
-  zipkin:
-    image: openzipkin/zipkin
-    ports:
-    - 9411:9411
   kafka:
     image: spotify/kafka:latest
     ports:
@@ -11,11 +7,7 @@ services:
     - 9092:9092
     environment:
     - ADVERTISED_PORT=9092
-    - ADVERTISED_HOST=kafka
-  redis:
-    image: redis:3.2.7-alpine
-    ports:
-    - 6379:6379
+    - ADVERTISED_HOST=10.200.10.1
   legacyorderprocessor:
     build: ../my-legacy-order-processor
     ports:
@@ -30,8 +22,5 @@ services:
     - 8085:8085
     depends_on:
     - kafka
-    - redis
     environment:
-    - ENVIRONMENT=cloud,compose
-    - VCAP_APPLICATION={"name":"my-order-service","instance_id":"my-order-service-1"}
-    - VCAP_SERVICES={"redis":[{"name":"redis","tags":["redis"],"credentials":{"port":"6379","hostname":"redis"}}]}
+    - ENVIRONMENT=compose
